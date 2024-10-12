@@ -129,3 +129,79 @@ footer {
     bottom: 0;
     width: 100%;
 }
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+}
+
+header {
+    background-color: #0071e3;
+    color: white;
+    padding: 20px;
+}
+
+#daily-word img {
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#word-study {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #0071e3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    color: #6e6e73;
+    font-size: 14px;
+    border-top: 1px solid #e5e5e5;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#daily-word, #word-study {
+    animation: fadeIn 1s ease-in-out;
+}
