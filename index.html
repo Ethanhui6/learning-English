@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="stylesheet" href="css/styles.css">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn English</title>
@@ -19,12 +19,88 @@
     </header>
     <main>
         <section>
-            <h2>Welcome to Learn English</h2>
+            <h2 id="welcome">Loading welcome message...</h2>
             <p>Start your journey to mastering English with our free resources.</p>
+        </section>
+
+        <!-- 文本切换 -->
+        <section>
+            <h3>Text Toggle Example:</h3>
+            <p id="demo">Click the button to change this text.</p>
+            <button onclick="changeText()">Change Text</button>
+        </section>
+
+        <!-- 字符计数器 -->
+        <section>
+            <h3>Character Counter:</h3>
+            <textarea id="text-input" oninput="updateCharacterCount()" rows="4" cols="50"></textarea>
+            <p id="char-count">Character count: 0</p>
+        </section>
+
+        <!-- 倒计时 -->
+        <section>
+            <h3>Countdown Timer:</h3>
+            <p id="countdown">Click start to begin the countdown.</p>
+            <button onclick="startCountdown()">Start Countdown</button>
+            <button onclick="stopCountdown()">Stop Countdown</button>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Learn English</p>
     </footer>
+
+    <!-- 内嵌脚本代码 -->
+    <script>
+    // 1. 页面加载时显示欢迎消息
+    document.addEventListener("DOMContentLoaded", function() {
+        displayWelcomeMessage();
+    });
+
+    // 欢迎消息函数
+    function displayWelcomeMessage() {
+        const welcomeMessage = "Welcome to the English learning website!";
+        document.getElementById("welcome").innerText = welcomeMessage;
+    }
+
+    // 2. 点击按钮切换文本内容
+    function changeText() {
+        const demoElement = document.getElementById("demo");
+        if (demoElement.innerText === "Click the button to change this text.") {
+            demoElement.innerText = "The text has been changed!";
+        } else {
+            demoElement.innerText = "Click the button to change this text.";
+        }
+    }
+
+    // 3. 计算输入框中的字符数
+    function updateCharacterCount() {
+        const textInput = document.getElementById("text-input").value;
+        const charCount = textInput.length;
+        document.getElementById("char-count").innerText = `Character count: ${charCount}`;
+    }
+
+    // 4. 简单的倒计时功能
+    let countdownInterval;
+    function startCountdown() {
+        let timeLeft = 10; // 设置倒计时为10秒
+        const countdownDisplay = document.getElementById("countdown");
+
+        countdownInterval = setInterval(function() {
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                countdownDisplay.innerText = "Time's up!";
+            } else {
+                countdownDisplay.innerText = `Time left: ${timeLeft} seconds`;
+            }
+            timeLeft--;
+        }, 1000);
+    }
+
+    // 5. 停止倒计时
+    function stopCountdown() {
+        clearInterval(countdownInterval);
+        document.getElementById("countdown").innerText = "Countdown stopped.";
+    }
+    </script>
 </body>
 </html>
