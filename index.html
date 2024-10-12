@@ -134,3 +134,52 @@
     </script><script src="js/script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn English - 随机背单词</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>每日单词</h1>
+        <div id="daily-word">
+            <p id="word-display"></p>
+            <img id="word-image" src="" alt="单词图片" />
+            <button onclick="playPronunciation()">点击发音</button>
+        </div>
+        <audio id="word-audio"></audio>
+    </header>
+    
+    <main>
+        <section id="word-choice">
+            <h2>选择词汇难度</h2>
+            <select id="level" onchange="loadWordList()">
+                <option value="primary">小学</option>
+                <option value="middle">初中</option>
+                <option value="high">高中</option>
+                <option value="cet4">四级</option>
+                <option value="cet6">六级</option>
+                <option value="special4">专四</option>
+                <option value="special8">专八</option>
+            </select>
+        </section>
+        
+        <section id="word-study">
+            <h2 id="study-word"></h2>
+            <img id="study-image" src="" alt="词汇图片">
+            <p id="study-example"></p>
+            <button onclick="playStudyAudio()">点击发音</button>
+            <audio id="study-audio"></audio>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Learn English - 随机背单词</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
