@@ -16,11 +16,18 @@
                 <li><a href="about.html">About</a></li>
             </ul>
         </nav>
+        <!-- 语言切换器 -->
+        <div id="language-switcher" style="float: right; margin-right: 20px;">
+            <select id="language" onchange="switchLanguage()">
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
     </header>
     <main>
         <section>
             <h2 id="welcome">Loading welcome message...</h2>
-            <p>Start your journey to mastering English with our free resources.</p>
+            <p id="intro">Start your journey to mastering English with our free resources.</p>
         </section>
 
         <!-- 文本切换 -->
@@ -51,18 +58,48 @@
 
     <!-- 内嵌脚本代码 -->
     <script>
-    // 1. 页面加载时显示欢迎消息
+    // 语言文本库
+    const translations = {
+        en: {
+            welcome: "Welcome to the English learning website!",
+            intro: "Start your journey to mastering English with our free resources.",
+            home: "Home",
+            lessons: "Lessons",
+            about: "About",
+            demo: "Click the button to change this text."
+        },
+        zh: {
+            welcome: "欢迎来到英语学习网站！",
+            intro: "开始您的英语学习之旅，使用我们提供的免费资源。",
+            home: "主页",
+            lessons: "课程",
+            about: "关于",
+            demo: "点击按钮以更改此文本。"
+        }
+    };
+
+    // 切换语言函数
+    function switchLanguage() {
+        const selectedLang = document.getElementById("language").value;
+        document.getElementById("welcome").innerText = translations[selectedLang].welcome;
+        document.getElementById("intro").innerText = translations[selectedLang].intro;
+        document.getElementById("demo").innerText = translations[selectedLang].demo;
+        document.querySelector('nav ul li:nth-child(1) a').innerText = translations[selectedLang].home;
+        document.querySelector('nav ul li:nth-child(2) a').innerText = translations[selectedLang].lessons;
+        document.querySelector('nav ul li:nth-child(3) a').innerText = translations[selectedLang].about;
+    }
+
+    // 页面加载时显示欢迎消息
     document.addEventListener("DOMContentLoaded", function() {
         displayWelcomeMessage();
     });
 
-    // 欢迎消息函数
     function displayWelcomeMessage() {
         const welcomeMessage = "Welcome to the English learning website!";
         document.getElementById("welcome").innerText = welcomeMessage;
     }
 
-    // 2. 点击按钮切换文本内容
+    // 文本切换
     function changeText() {
         const demoElement = document.getElementById("demo");
         if (demoElement.innerText === "Click the button to change this text.") {
@@ -72,17 +109,17 @@
         }
     }
 
-    // 3. 计算输入框中的字符数
+    // 计算输入框中的字符数
     function updateCharacterCount() {
         const textInput = document.getElementById("text-input").value;
         const charCount = textInput.length;
         document.getElementById("char-count").innerText = `Character count: ${charCount}`;
     }
 
-    // 4. 简单的倒计时功能
+    // 倒计时功能
     let countdownInterval;
     function startCountdown() {
-        let timeLeft = 10; // 设置倒计时为10秒
+        let timeLeft = 10;
         const countdownDisplay = document.getElementById("countdown");
 
         countdownInterval = setInterval(function() {
@@ -96,7 +133,6 @@
         }, 1000);
     }
 
-    // 5. 停止倒计时
     function stopCountdown() {
         clearInterval(countdownInterval);
         document.getElementById("countdown").innerText = "Countdown stopped.";
